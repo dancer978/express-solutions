@@ -1,7 +1,37 @@
+/* Основные стили */
 body {
     font-family: 'Inter', sans-serif;
+    transition: background-color 0.5s ease;
 }
 
+/* Цветовые темы для каждого продукта */
+:root {
+    /* Аудит рисков - синий (безопасность, надежность) */
+    --risk-primary: #0d6efd;
+    --risk-light: #cfe2ff;
+    --risk-bg: #f8f9fa;
+    --risk-gradient: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
+    
+    /* ИИ-практикум - фиолетовый (инновации, технологии) */
+    --ai-primary: #6f42c1;
+    --ai-light: #e0cffc;
+    --ai-bg: #f8f7fc;
+    --ai-gradient: linear-gradient(135deg, #6f42c1 0%, #5a31a3 100%);
+    
+    /* Оценка персонала - бирюзовый (международность, профессионализм) */
+    --visa-primary: #0dcaf0;
+    --visa-light: #cff4fc;
+    --visa-bg: #f7fbfc;
+    --visa-gradient: linear-gradient(135deg, #0dcaf0 0%, #0aa2c0 100%);
+    
+    /* Анализ конкурента - индиго (стратегия, аналитика) */
+    --enemy-primary: #4338ca;
+    --enemy-light: #ddd6fe;
+    --enemy-bg: #f5f3ff;
+    --enemy-gradient: linear-gradient(135deg, #4338ca 0%, #3730a3 100%);
+}
+
+/* Базовые стили заголовков */
 .featurette-heading {
     font-weight: 700;
     line-height: 1.2;
@@ -9,6 +39,7 @@ body {
     color: #333;
 }
 
+/* Списки */
 .tab-pane ul, .tab-pane ol {
     padding-left: 1.5rem;
 }
@@ -17,14 +48,230 @@ body {
     margin-bottom: 0.5rem;
 }
 
-.card {
-    border: 1px solid #dee2e6;
+/* Анимация появления контента */
+.tab-pane {
+    animation: fadeIn 0.6s ease-in-out;
 }
 
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Навигационные таблетки с плавными переходами */
+.nav-pills .nav-link {
+    color: #6c757d;
+    transition: all 0.3s ease;
+    border-radius: 50px;
+    padding: 0.5rem 1.5rem;
+    font-weight: 500;
+}
+
+.nav-pills .nav-link:hover {
+    background-color: rgba(13, 110, 253, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Активные таблетки с динамическими цветами */
+.nav-pills .nav-link.active {
+    color: #fff;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+#risk-audit-tab.active {
+    background: var(--risk-gradient);
+}
+
+#ai-workshop-tab.active {
+    background: var(--ai-gradient);
+}
+
+#visa-assessment-tab.active {
+    background: var(--visa-gradient);
+}
+
+#competitor-analysis-tab.active {
+    background: var(--enemy-gradient);
+}
+
+/* Контейнер табов */
+.tab-content {
+    border: none;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    background-color: #fff;
+    transition: background-color 0.5s ease;
+}
+
+/* Темы для каждого продукта */
+#risk-audit.active {
+    --current-primary: var(--risk-primary);
+    --current-light: var(--risk-light);
+    --current-gradient: var(--risk-gradient);
+}
+
+#ai-workshop.active {
+    --current-primary: var(--ai-primary);
+    --current-light: var(--ai-light);
+    --current-gradient: var(--ai-gradient);
+}
+
+#visa-assessment.active {
+    --current-primary: var(--visa-primary);
+    --current-light: var(--visa-light);
+    --current-gradient: var(--visa-gradient);
+}
+
+#competitor-analysis.active {
+    --current-primary: var(--enemy-primary);
+    --current-light: var(--enemy-light);
+    --current-gradient: var(--enemy-gradient);
+}
+
+/* Кнопки с градиентом текущей темы */
+.tab-pane.active .btn-primary {
+    background: var(--current-gradient, var(--risk-gradient));
+    border: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.tab-pane.active .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Карточки */
+.card {
+    border: 2px solid #e9ecef;
+    transition: all 0.3s ease;
+}
+
+.tab-pane.active .card.border-primary {
+    border-color: var(--current-primary, var(--risk-primary));
+}
+
+/* Ключевые точки */
+.key-point {
+    padding: 1.5rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 0.75rem;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.key-point:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.key-point i {
+    transition: color 0.3s ease;
+}
+
+.tab-pane.active .key-point i {
+    color: var(--current-primary, var(--risk-primary)) !important;
+}
+
+/* Результаты */
+.result-item {
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.result-item:hover {
+    transform: translateX(5px);
+}
+
+.tab-pane.active .result-item.border-primary {
+    border-left-color: var(--current-primary, var(--risk-primary)) !important;
+    border-left-width: 4px !important;
+}
+
+.tab-pane.active .result-item.bg-light {
+    background: var(--current-light, var(--risk-light)) !important;
+}
+
+/* Шаги процесса */
+.step-card {
+    padding: 1.5rem;
+    height: 100%;
+    transition: all 0.3s ease;
+}
+
+.step-number {
+    width: 60px;
+    height: 60px;
+    transition: all 0.3s ease;
+}
+
+.tab-pane.active .step-number {
+    background: var(--current-gradient, var(--risk-gradient)) !important;
+}
+
+.step-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Hero секция */
+.hero-section {
+    transition: all 0.5s ease;
+}
+
+.hero-section h1 {
+    line-height: 1.3;
+    background: linear-gradient(135deg, #1a1a1a 0%, #4a4a4a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Аккордеон */
+.accordion-button:not(.collapsed) {
+    color: #0c5460;
+    background-color: #e9f5ff;
+    transition: all 0.3s ease;
+}
+
+.tab-pane.active .accordion-button:not(.collapsed) {
+    background-color: var(--current-light, var(--risk-light));
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+    border-color: rgba(13, 110, 253, 0.3);
+}
+
+.accordion-button {
+    transition: all 0.3s ease;
+}
+
+.accordion-button:hover {
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+/* Алерты */
 .alert-info {
     background-color: #e9f5ff;
     border-color: #b8dfff;
     color: #0c5460;
+    transition: all 0.3s ease;
+}
+
+.tab-pane.active .alert-info {
+    background-color: var(--current-light, var(--risk-light));
+    border-color: var(--current-primary, var(--risk-primary));
 }
 
 .alert-info a {
@@ -32,54 +279,67 @@ body {
     color: #0c5460;
 }
 
-.nav-pills .nav-link {
-    color: #0d6efd;
+.alert-info .btn-outline-info {
+    border-color: var(--current-primary, var(--risk-primary));
+    color: var(--current-primary, var(--risk-primary));
+    transition: all 0.3s ease;
 }
 
-.nav-pills .nav-link.active {
-    color: #fff;
-    background-color: #0d6efd;
+.alert-info .btn-outline-info:hover {
+    background-color: var(--current-primary, var(--risk-primary));
+    color: white;
 }
 
-.tab-content {
-    border: 1px solid #dee2e6;
-    border-top: none;
-    padding: 1rem 2rem;
-    border-radius: 0 0 .375rem .375rem;
-    background-color: #fff;
+/* Чекбоксы в списках */
+.bi-check-circle-fill {
+    transition: color 0.3s ease;
 }
 
-/* Additional styles for the competitor analysis page */
-.key-point {
-    padding: 1rem;
-    background: #f8f9fa;
-    border-radius: 0.5rem;
-    min-height: 120px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.tab-pane.active .bi-check-circle-fill {
+    color: var(--current-primary, var(--risk-primary)) !important;
 }
 
-.result-item {
-    margin-bottom: 1.5rem;
+/* Цены */
+.display-4 {
+    transition: color 0.3s ease;
 }
 
-.step-card {
+.tab-pane.active .display-4 {
+    background: var(--current-gradient, var(--risk-gradient));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Модальное окно */
+.modal-content {
+    border-radius: 1rem;
+    border: none;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+    border-bottom: 1px solid #e9ecef;
     padding: 1.5rem;
-    height: 100%;
 }
 
-.hero-section h1 {
-    line-height: 1.3;
+.modal-body {
+    padding: 2rem;
 }
 
-.accordion-button:not(.collapsed) {
-    color: #0c5460;
-    background-color: #e9f5ff;
-}
-
-.accordion-button:focus {
-    box-shadow: none;
-    border-color: #b8dfff;
+/* Адаптивность */
+@media (max-width: 768px) {
+    .nav-pills .nav-link {
+        margin-bottom: 0.5rem;
+        font-size: 0.875rem;
+        padding: 0.4rem 1rem;
+    }
+    
+    .tab-content {
+        padding: 1rem;
+    }
+    
+    .hero-section h1 {
+        font-size: 1.75rem;
+    }
 }
