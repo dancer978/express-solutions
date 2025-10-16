@@ -1,0 +1,18 @@
+# Разрешаем индексацию всем поисковым ботам
+User-agent: *
+Allow: /
+
+# Специальные директивы для Яндекса
+User-agent: Yandex
+Allow: /
+Clean-param: utm_source&utm_medium&utm_campaign
+
+# Директивы для Google
+User-agent: Googlebot
+Allow: /
+
+# Ссылка на карту сайта
+Sitemap: https://express.luktrud.ru/sitemap.xml
+
+# Указываем главную страницу (для Яндекса)
+Host: express.luktrud.ru
